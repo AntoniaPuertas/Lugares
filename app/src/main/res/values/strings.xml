@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Lugares</string>
+    <string name="email">Email</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="entrar">Entrar</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="nuevo_lugar">Nuevo Lugar</string>
+    <string name="nombre">Nombre</string>
+    <string name="descripcion">Descripción</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="crear">Crear</string>
+</resources>
