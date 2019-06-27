@@ -16,8 +16,7 @@ import com.example.lugares.data.Lugar;
 
 import static com.example.lugares.data.ListaDatos.listaLugares;
 
-public class NuevvoLugarActivity extends AppCompatActivity {
-
+public class ModificarLugarActivity extends AppCompatActivity {
     TextView txtTituloNuevoLugar;
     EditText etNombreNuevoLugar;
     EditText etDescripcionNuevoLugar;
@@ -29,6 +28,8 @@ public class NuevvoLugarActivity extends AppCompatActivity {
     private final static int RESPUESTA_LOCALIZACION = 34;
     double latitud = 0;
     double longitud = 0;
+    Lugar lugar;
+    int posicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +43,26 @@ public class NuevvoLugarActivity extends AppCompatActivity {
         imgSeleccionarNuevoLugar = findViewById(R.id.imgSeleccionarNuevoLugar);
         btnCancelarNuevoLugar = findViewById(R.id.btnCancelarNuevoLugar);
         btnCrearNuevoLugar = findViewById(R.id.btnCrearNuevoLugar);
+
+        txtTituloNuevoLugar.setText("Modificar Datos");
+        btnCrearNuevoLugar.setText("Guardar");
+
+        Bundle extras = getIntent().getExtras();
+        posicion = extras.getInt("posicion");
+        lugar = listaLugares.get(posicion);
+        latitud = lugar.getLatitud();
+        longitud = lugar.getLongitud();
+        etNombreNuevoLugar.setText(lugar.getNombre());
+        etDescripcionNuevoLugar.setText(lugar.getDescripcion());
+        rbNuevoLugar.setRating(lugar.getValoracion());
     }
 
     public void seleccionarNuevoLugar(View view){
         //abrir mapa con ubicacion actual
-        Intent intent = new Intent(NuevvoLugarActivity.this, LocalizacionActivity.class);
-        intent.putExtra("accion", "nuevo");
+        Intent intent = new Intent(ModificarLugarActivity.this, LocalizacionActivity.class);
+        intent.putExtra("posicion", posicion);
+
+        intent.putExtra("accion", "modificar");
         startActivityForResult(intent, RESPUESTA_LOCALIZACION);
     }
 
@@ -57,11 +72,12 @@ public class NuevvoLugarActivity extends AppCompatActivity {
 
     public void crearNuevoLugar(View view){
         if(comprobarDatos()){
-            listaLugares.add(new Lugar(etNombreNuevoLugar.getText().toString(),
-                    etDescripcionNuevoLugar.getText().toString(),
-                    latitud,
-                    longitud,
-                    rbNuevoLugar.getRating()));
+            //modifica el lugar
+            lugar.setNombre(etNombreNuevoLugar.getText().toString());
+            lugar.setDescripcion(etDescripcionNuevoLugar.getText().toString());
+            lugar.setValoracion(rbNuevoLugar.getRating());
+            lugar.setLatitud(latitud);
+            lugar.setLongitud(longitud);
             finish();
         }
     }

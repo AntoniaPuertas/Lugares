@@ -9,4 +9,7 @@
     <string name="descripcion">Descripción</string>
     <string name="cancelar">Cancelar</string>
     <string name="crear">Crear</string>
+    <string name="location_permission_denied">Permiso de localización denegado</string>
+    <string name="permission_required_toast">Se requieren permisos de localización</string>
+    <string name="permission_rationale_location">Para que esta aplicación funcione se necesitan los permisos de localización</string>
 </resources>

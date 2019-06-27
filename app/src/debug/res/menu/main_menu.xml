@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/it_nuevo_lugar"
+        android:icon="@drawable/ic_monte"
+        android:title="@string/nuevo_lugar"
+        app:showAsAction="always" />
+</menu>

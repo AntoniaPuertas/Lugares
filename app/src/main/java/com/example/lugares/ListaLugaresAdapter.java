@@ -75,7 +75,10 @@ public class ListaLugaresAdapter extends ArrayAdapter<Lugar> {
         imgModificarLugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO:modificar lugar
+                //modificar lugar
+                Intent intent = new Intent(context, ModificarLugarActivity.class);
+                intent.putExtra("posicion", position);
+                context.startActivity(intent);
             }
         });
 
